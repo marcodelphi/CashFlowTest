@@ -1,22 +1,12 @@
 ﻿using CashFlowTest.Domain.Data;
 using CashFlowTest.Domain.Model.Entities;
-using Microsoft.EntityFrameworkCore;
+using CashFlowTest.Query.Abstractions.Repositories;
 
 namespace CashFlowTest.Query.Repositories;
 
-internal class ExpenseCategoryQueryRespository : IExpenseCategoryQueryRespository
+public class ExpenseCategoryQueryRespository : BaseQueryRepository<ExpenseCategory>, IExpenseCategoryQueryRespository
 {
-    private readonly CashFlowTestDataContext _context;
-
-    public ExpenseCategoryQueryRespository(CashFlowTestDataContext context)
+    public ExpenseCategoryQueryRespository(CashFlowTestDataContext context) : base(context)
     {
-        _context = context;
     }
-
-    public async Task<ExpenseCategory> GetAsync(Guid id, CancellationToken cancellationToken)
-        => await _context.ExpenseCategories.Where(expenseCategory => id.Equals(expenseCategory.Id)).FirstOrDefaultAsync(cancellationToken);
-
-    public async Task<ExpenseCategory[]> GetAllAsync(CancellationToken cancellationToken) 
-        => await _context.ExpenseCategories.ToArrayAsync(cancellationToken);
-
 }

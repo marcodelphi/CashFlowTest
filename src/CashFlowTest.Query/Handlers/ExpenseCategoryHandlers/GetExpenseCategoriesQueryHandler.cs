@@ -1,9 +1,9 @@
 ﻿using CashFlowTest.Domain.Model.Entities;
 using CashFlowTest.Query.AbstractHandlers;
 using CashFlowTest.Query.Abstractions.Queries.ExpenseCategories;
-using CashFlowTest.Query.Repositories;
+using CashFlowTest.Query.Abstractions.Repositories;
 
-namespace CashFlowTest.Query.Handlers.ExpenseCategories;
+namespace CashFlowTest.Query.Handlers.ExpenseCategoryHandlers;
 
 internal sealed class GetExpenseCategoriesQueryHandler : SimpleQueryHandler<GetExpenseCategoriesQuery, ExpenseCategory[]>
 {
@@ -14,6 +14,6 @@ internal sealed class GetExpenseCategoriesQueryHandler : SimpleQueryHandler<GetE
         _repository = repository;
     }
 
-    protected override async Task<ExpenseCategory[]> HandleQueryAsync(GetExpenseCategoriesQuery query, CancellationToken cancellationToken) 
+    protected override async Task<ExpenseCategory[]> HandleQueryAsync(GetExpenseCategoriesQuery query, CancellationToken cancellationToken)
         => await _repository.GetAllAsync(cancellationToken);
 }

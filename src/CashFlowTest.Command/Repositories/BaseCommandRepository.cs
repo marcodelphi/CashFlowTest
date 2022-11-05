@@ -10,7 +10,6 @@ public abstract class BaseCommandRepository<TEntity> : IBaseCommandRepository<TE
 
     protected DbSet<TEntity> _dbSet;
 
-
     public BaseCommandRepository(DbContext context)
     {
         _context = context;

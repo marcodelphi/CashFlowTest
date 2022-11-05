@@ -1,6 +1,8 @@
-﻿namespace CashFlowTest.Command.Abstractions.Repositories;
+﻿using CashFlowTest.Domain.Model;
 
-public interface ICommandRepository<TEntity>
+namespace CashFlowTest.Command.Abstractions.Repositories;
+
+public interface ICommandRepository<TEntity> where TEntity: BaseEntity, IAggregateRoot<TEntity>
 {
     Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken);
     Task DeleteAsync(Guid id, CancellationToken cancellationToken);

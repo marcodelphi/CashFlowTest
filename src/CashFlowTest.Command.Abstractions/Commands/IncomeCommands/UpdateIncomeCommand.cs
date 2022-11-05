@@ -2,7 +2,7 @@
 
 namespace CashFlowTest.Command.Abstractions.Commands.IncomeCommands;
 
-public class UpdateIncomeCommand : Command<Income>
+public sealed class UpdateIncomeCommand : Command<Income>
 {
     public UpdateIncomeCommand(Guid id, string description, string note, decimal value, DateTime incomeDate)
     {

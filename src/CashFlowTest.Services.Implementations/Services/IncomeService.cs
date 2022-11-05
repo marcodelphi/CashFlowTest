@@ -2,6 +2,7 @@
 using CashFlowTest.Crosscutting.DTOs;
 using CashFlowTest.Domain.Model.AdaptersContracts;
 using CashFlowTest.Domain.Model.Entities;
+using CashFlowTest.Query.Abstractions.Queries.IncomeQueries;
 using CashFlowTest.Services.Abstractions.Services;
 using MediatR;
 
@@ -16,10 +17,12 @@ public class IncomeService : BaseCrudService<Income, IncomeDto, AddIncomeCommand
         _adapter = adapter;
     }
 
-    public Task<IncomeDto[]> GetAllIncomesAsync(CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
-
     protected override IncomeDto ToDto(Income income) => _adapter.ToDto(income);
+
+    public async Task<IncomeDto[]> GetAllIncomesAsync(CancellationToken cancellationToken)
+    {
+        Income[] incomes = await _mediator.Send(new GetIncomesQuery(), cancellationToken);
+
+        return incomes.Select(income => ToDto(income)).ToArray();
+    }
 }

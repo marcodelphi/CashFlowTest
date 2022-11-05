@@ -2,7 +2,7 @@
 
 namespace CashFlowTest.Command.Abstractions.Commands.ExpenseCategoryCommands;
 
-public class UpdateExpenseCategoryCommand : Command<ExpenseCategory>
+public sealed class UpdateExpenseCategoryCommand : Command<ExpenseCategory>
 {
     public UpdateExpenseCategoryCommand(Guid id, string description)
     {

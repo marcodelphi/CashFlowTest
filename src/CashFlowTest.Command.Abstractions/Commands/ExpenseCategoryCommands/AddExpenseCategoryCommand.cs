@@ -2,7 +2,7 @@
 
 namespace CashFlowTest.Command.Abstractions.Commands.ExpenseCategoryCommands;
 
-public class AddExpenseCategoryCommand : Command<ExpenseCategory>
+public sealed class AddExpenseCategoryCommand : Command<ExpenseCategory>
 {
     public AddExpenseCategoryCommand(string description)
     {

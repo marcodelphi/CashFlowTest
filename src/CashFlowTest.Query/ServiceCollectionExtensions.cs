@@ -1,4 +1,6 @@
-﻿using CashFlowTest.Query.Repositories;
+﻿using CashFlowTest.Domain.Model.Entities;
+using CashFlowTest.Query.Abstractions.Repositories;
+using CashFlowTest.Query.Repositories;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +14,7 @@ public static class ServiceCollectionExtensions
         services.RegisterQueryHandlersInAssembly();
 
         services.AddScoped<IExpenseCategoryQueryRespository, ExpenseCategoryQueryRespository>();
+        services.AddScoped<IIncomeQueryRespository, IncomeQueryRespository>();
         return services;
     }
 

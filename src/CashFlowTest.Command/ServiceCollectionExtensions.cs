@@ -13,6 +13,7 @@ public static class ServiceCollectionExtensions
         services.RegisterCommandHandlersInAssembly();
 
         services.AddScoped<IExpenseCategoryRepository, ExpenseCategoryRepository>();
+        services.AddScoped<IIncomeRepository, IncomeRepository>();
         return services;
     }
 

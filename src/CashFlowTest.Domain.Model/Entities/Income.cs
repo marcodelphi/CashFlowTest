@@ -9,9 +9,13 @@ public sealed class Income : BaseEntity, IAggregateRoot<Income>
         CreatedDate = DateTime.Now;
     }
 
-    public string Description { get; }
+    public Income()
+    {
+    }
+
+    public string Description { get; set; }
     public string Note { get; set; }
-    public decimal Value { get; }
-    public DateTime CreatedDate { get; set; }
+    public decimal Value { get; set; }
+    public DateTime CreatedDate { get; }
     public DateTime IncomeDate { get; set; }
 }

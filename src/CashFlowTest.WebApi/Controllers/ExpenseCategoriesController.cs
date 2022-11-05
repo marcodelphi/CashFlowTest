@@ -9,39 +9,39 @@ namespace CashFlowTest.WebApi.Controllers;
 [ApiController]
 public sealed class ExpenseCategoriesController : ControllerBase
 {
-    private readonly IExpenseCategoryService expenseCategoryService;
+    private readonly IExpenseCategoryService _expenseCategoryService;
 
     public ExpenseCategoriesController(IExpenseCategoryService expenseCategoryService)
     {
-        this.expenseCategoryService = expenseCategoryService;
+        _expenseCategoryService = expenseCategoryService;
     }
 
     [HttpGet]
     public async Task<ExpenseCategoryDto[]> Get(CancellationToken cancellationToken)
     {
-        return await expenseCategoryService.GetAllExpenseCategoriesAsync(cancellationToken);
+        return await _expenseCategoryService.GetAllExpenseCategoriesAsync(cancellationToken);
     }
 
 
-    [HttpGet("{id}", Name = "ExpenseCategoryLink")]
-    public async Task<ExpenseCategoryDto> Get(Guid id, CancellationToken cancellationToken)
+    [HttpGet("{id}", Name = "GetExpenseCategoryLink")]
+    public async Task<IncomeDto> Get(Guid id, CancellationToken cancellationToken)
     {
         await Task.Delay(1, cancellationToken);
         return null;
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(string description, CancellationToken cancellationToken)
+    public async Task<IActionResult> Post(AddExpenseCategoryCommand command, CancellationToken cancellationToken)
     {
-        ExpenseCategoryDto expenseCategory = await expenseCategoryService.AddAsync(new AddExpenseCategoryCommand(description), cancellationToken);
+        ExpenseCategoryDto expenseCategory = await _expenseCategoryService.AddAsync(command, cancellationToken);
 
-        return CreatedAtRoute("ExpenseCategoryLink", new { id = expenseCategory.Id }, expenseCategory);
+        return CreatedAtRoute("GetExpenseCategoryLink", new { id = expenseCategory.Id }, expenseCategory);
     }
 
-    [HttpPut("{id:guid}", Name = "UpdateCategoryLink")]
-    public async Task<ActionResult<ExpenseCategoryDto>> Put(Guid id, string description, CancellationToken cancellationToken)
+    [HttpPut]
+    public async Task<ActionResult<ExpenseCategoryDto>> Put(UpdateExpenseCategoryCommand command, CancellationToken cancellationToken)
     {
-        ExpenseCategoryDto expenseCategory = await expenseCategoryService.UpdateAsync(new UpdateExpenseCategoryCommand(id, description), cancellationToken);
+        ExpenseCategoryDto expenseCategory = await _expenseCategoryService.UpdateAsync(command, cancellationToken);
 
         if (expenseCategory is null)
             return NotFound();
@@ -49,8 +49,8 @@ public sealed class ExpenseCategoriesController : ControllerBase
         return expenseCategory;
     }
 
-    [HttpDelete("{id:guid}", Name = "DeleteCategoryLink")]
+    [HttpDelete("{id:guid}")]
     public async Task Delete(Guid id, CancellationToken cancellationToken) 
-        => await expenseCategoryService.DeleteAsync(new DeleteExpenseCategoryCommand(id), cancellationToken);
+        => await _expenseCategoryService.DeleteAsync(new DeleteExpenseCategoryCommand(id), cancellationToken);
 
 }

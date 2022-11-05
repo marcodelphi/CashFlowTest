@@ -9,6 +9,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddAdapters(this IServiceCollection services)
     {
         services.AddScoped<IExpenseCategoryAdapter, ExpenseCategoryAdapter>();
+        services.AddScoped<IIncomeAdapter, IncomeAdapter>();
         return services;
     }
 }

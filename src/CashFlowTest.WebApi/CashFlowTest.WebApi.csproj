@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CashFlowTest.Command\CashFlowTest.Command.csproj" />
+    <ProjectReference Include="..\CashFlowTest.Domain.Data\CashFlowTest.Domain.Data.csproj" />
+    <ProjectReference Include="..\CashFlowTest.Query\CashFlowTest.Query.csproj" />
+    <ProjectReference Include="..\CashFlowTest.Services.Implementations\CashFlowTest.Services.Implementations.csproj" />
+  </ItemGroup>
+
+</Project>

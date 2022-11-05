@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CashFlowTest.Command.Abstractions\CashFlowTest.Command.Abstractions.csproj" />
+    <ProjectReference Include="..\CashFlowTest.Crosscutting\CashFlowTest.Crosscutting.csproj" />
+    <ProjectReference Include="..\CashFlowTest.Query.Abstractions\CashFlowTest.Query.Abstractions.csproj" />
+    <ProjectReference Include="..\CashFlowTest.Services.Abstractions\CashFlowTest.Services.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

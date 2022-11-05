@@ -33,7 +33,7 @@ public sealed class ExpenseCategoriesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post(string description, CancellationToken cancellationToken)
     {
-        ExpenseCategoryDto expenseCategory = await expenseCategoryService.AddExpenseCategoryAsync(new AddExpenseCategoryCommand(description), cancellationToken);
+        ExpenseCategoryDto expenseCategory = await expenseCategoryService.AddAsync(new AddExpenseCategoryCommand(description), cancellationToken);
 
         return CreatedAtRoute("ExpenseCategoryLink", new { id = expenseCategory.Id }, expenseCategory);
     }
@@ -41,7 +41,7 @@ public sealed class ExpenseCategoriesController : ControllerBase
     [HttpPut("{id:guid}", Name = "UpdateCategoryLink")]
     public async Task<ActionResult<ExpenseCategoryDto>> Put(Guid id, string description, CancellationToken cancellationToken)
     {
-        ExpenseCategoryDto expenseCategory = await expenseCategoryService.UpdateExpenseCategoryAsync(new UpdateExpenseCategoryCommand(id, description), cancellationToken);
+        ExpenseCategoryDto expenseCategory = await expenseCategoryService.UpdateAsync(new UpdateExpenseCategoryCommand(id, description), cancellationToken);
 
         if (expenseCategory is null)
             return NotFound();
@@ -51,6 +51,6 @@ public sealed class ExpenseCategoriesController : ControllerBase
 
     [HttpDelete("{id:guid}", Name = "DeleteCategoryLink")]
     public async Task Delete(Guid id, CancellationToken cancellationToken) 
-        => await expenseCategoryService.DeleteExpenseCategoryAsync(new DeleteExpenseCategoryCommand(id), cancellationToken);
+        => await expenseCategoryService.DeleteAsync(new DeleteExpenseCategoryCommand(id), cancellationToken);
 
 }

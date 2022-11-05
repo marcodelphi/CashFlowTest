@@ -1,4 +1,4 @@
-﻿using CashFlowTest.Domain.Model;
+﻿using CashFlowTest.Domain.Data;
 using CashFlowTest.Domain.Model.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,9 +6,9 @@ namespace CashFlowTest.Query.Repositories;
 
 internal class ExpenseCategoryQueryRespository : IExpenseCategoryQueryRespository
 {
-    private readonly ICashFlowTestDataContext _context;
+    private readonly CashFlowTestDataContext _context;
 
-    public ExpenseCategoryQueryRespository(ICashFlowTestDataContext context)
+    public ExpenseCategoryQueryRespository(CashFlowTestDataContext context)
     {
         _context = context;
     }

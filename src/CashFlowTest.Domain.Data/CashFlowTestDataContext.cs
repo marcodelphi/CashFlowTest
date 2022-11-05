@@ -1,10 +1,9 @@
-﻿using CashFlowTest.Domain.Model;
-using CashFlowTest.Domain.Model.Entities;
+﻿using CashFlowTest.Domain.Model.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CashFlowTest.Domain.Data;
 
-public sealed class CashFlowTestDataContext : DbContext, ICashFlowTestDataContext
+public sealed class CashFlowTestDataContext : DbContext
 {
     public DbSet<Expense> Expenses { get; set; }
     public DbSet<ExpenseCategory> ExpenseCategories { get; set; }

@@ -32,7 +32,7 @@ app.MapControllers();
 
 using IServiceScope serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
 
-ICashFlowTestDataContext cashFlowDataContext = serviceScope.ServiceProvider.GetService<ICashFlowTestDataContext>();
+CashFlowTestDataContext cashFlowDataContext = serviceScope.ServiceProvider.GetService<CashFlowTestDataContext>();
 
 await cashFlowDataContext.EnsureDataCreatedAsync(cancellationToken);
 

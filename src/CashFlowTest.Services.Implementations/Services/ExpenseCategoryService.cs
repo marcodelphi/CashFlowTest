@@ -8,37 +8,16 @@ using MediatR;
 
 namespace CashFlowTest.Services.Implementations.Services;
 
-public class ExpenseCategoryService : IExpenseCategoryService
+public class ExpenseCategoryService : BaseCrudService<ExpenseCategory, ExpenseCategoryDto, AddExpenseCategoryCommand, UpdateExpenseCategoryCommand, DeleteExpenseCategoryCommand>, IExpenseCategoryService
 {
-    private readonly IMediator _mediator;
     private readonly IExpenseCategoryAdapter _adapter;
 
-    public ExpenseCategoryService(IMediator mediator, IExpenseCategoryAdapter adapter)
+    public ExpenseCategoryService(IMediator mediator, IExpenseCategoryAdapter adapter) : base(mediator)
     {
-        _mediator = mediator;
         _adapter = adapter;
     }
 
-    private ExpenseCategoryDto ToDto(ExpenseCategory expenseCategory) => _adapter.ToDto(expenseCategory);
-
-    public async Task<ExpenseCategoryDto> AddExpenseCategoryAsync(AddExpenseCategoryCommand command, CancellationToken cancellationToken)
-    {
-        ExpenseCategory expenseCategory = await _mediator.Send(command, cancellationToken);
-
-        return ToDto(expenseCategory);
-    }
-
-    public async Task DeleteExpenseCategoryAsync(DeleteExpenseCategoryCommand command, CancellationToken cancellationToken)
-    {
-        await _mediator.Send(command, cancellationToken);
-    }
-
-    public async Task<ExpenseCategoryDto> UpdateExpenseCategoryAsync(UpdateExpenseCategoryCommand command, CancellationToken cancellationToken)
-    {
-        ExpenseCategory expenseCategory = await _mediator.Send(command, cancellationToken);
-
-        return ToDto(expenseCategory);
-    }
+    protected override ExpenseCategoryDto ToDto(ExpenseCategory expenseCategory) => _adapter.ToDto(expenseCategory);
 
     public async Task<ExpenseCategoryDto[]> GetAllExpenseCategoriesAsync(CancellationToken cancellationToken)
     {

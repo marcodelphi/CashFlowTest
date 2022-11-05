@@ -1,12 +1,10 @@
 ﻿using CashFlowTest.Command.Abstractions.Commands.ExpenseCategoryCommands;
 using CashFlowTest.Crosscutting.DTOs;
+using CashFlowTest.Domain.Model.Entities;
 
 namespace CashFlowTest.Services.Abstractions.Services;
 
-public interface IExpenseCategoryService
+public interface IExpenseCategoryService: IBaseCrudService<ExpenseCategory, ExpenseCategoryDto, AddExpenseCategoryCommand, UpdateExpenseCategoryCommand, DeleteExpenseCategoryCommand>
 {
-    Task<ExpenseCategoryDto> AddExpenseCategoryAsync(AddExpenseCategoryCommand command, CancellationToken cancellationToken);
-    Task DeleteExpenseCategoryAsync(DeleteExpenseCategoryCommand command, CancellationToken cancellationToken);
     Task<ExpenseCategoryDto[]> GetAllExpenseCategoriesAsync(CancellationToken cancellationToken);
-    Task<ExpenseCategoryDto> UpdateExpenseCategoryAsync(UpdateExpenseCategoryCommand command, CancellationToken cancellationToken);
 }

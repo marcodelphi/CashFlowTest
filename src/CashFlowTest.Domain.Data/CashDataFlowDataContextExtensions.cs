@@ -5,7 +5,7 @@ namespace CashFlowTest.Domain.Data;
 
 public static class CashDataFlowDataContextExtensions
 {
-    public static async Task EnsureDataCreatedAsync(this ICashFlowTestDataContext context, CancellationToken cancellationToken)
+    public static async Task EnsureDataCreatedAsync(this CashFlowTestDataContext context, CancellationToken cancellationToken)
     {
         await context.Database.EnsureCreatedAsync(cancellationToken);
 
@@ -14,7 +14,7 @@ public static class CashDataFlowDataContextExtensions
         await context.SaveChangesAsync(cancellationToken);
     }
 
-    private static void AddDefaultExpenseCategories(ICashFlowTestDataContext context)
+    private static void AddDefaultExpenseCategories(CashFlowTestDataContext context)
     {
         context.ExpenseCategories.AddRange(new ExpenseCategory[]
         {

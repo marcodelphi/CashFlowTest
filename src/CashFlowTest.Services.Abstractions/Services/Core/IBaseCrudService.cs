@@ -1,4 +1,4 @@
-﻿namespace CashFlowTest.Services.Abstractions.Services;
+﻿namespace CashFlowTest.Services.Abstractions.Services.Core;
 
 public interface IBaseCrudService<TEntity, TResult, TAddCommand, TUpdateCommand, TDeleteCommand>
 {

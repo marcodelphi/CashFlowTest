@@ -1,9 +1,9 @@
 ﻿using CashFlowTest.Command.Abstractions;
 using CashFlowTest.Domain.Model;
-using CashFlowTest.Services.Abstractions.Services;
+using CashFlowTest.Services.Abstractions.Services.Core;
 using MediatR;
 
-namespace CashFlowTest.Services.Implementations.Services;
+namespace CashFlowTest.Services.Implementations.Services.Core;
 
 public abstract class BaseCrudService<TEntity, TResult, TAddCommand, TUpdateCommand, TDeleteCommand> : IBaseCrudService<TEntity, TResult, TAddCommand, TUpdateCommand, TDeleteCommand> where TEntity : BaseEntity
     where TResult : class

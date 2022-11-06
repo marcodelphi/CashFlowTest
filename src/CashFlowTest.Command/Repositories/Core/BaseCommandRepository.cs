@@ -1,8 +1,11 @@
-﻿using CashFlowTest.Command.Abstractions.Repositories;
+﻿using CashFlowTest.Command.Abstractions.Repositories.Core;
+using CashFlowTest.Crosscutting.Exceptions;
 using CashFlowTest.Domain.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System.Linq.Expressions;
 
-namespace CashFlowTest.Command.Repositories;
+namespace CashFlowTest.Command.Repositories.Core;
 
 public abstract class BaseCommandRepository<TEntity> : IBaseCommandRepository<TEntity> where TEntity : BaseEntity, IAggregateRoot<TEntity>
 {
@@ -16,9 +19,25 @@ public abstract class BaseCommandRepository<TEntity> : IBaseCommandRepository<TE
         _dbSet = context.Set<TEntity>();
     }
 
-    public async Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken)
+    public virtual async Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken)
     {
         var entry = _dbSet.Add(entity);
+
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return entry.Entity;
+    }
+
+    public async Task<TEntity> AddAsync<TProperty>(TEntity entity, Expression<Func<TEntity, TProperty>> loadExpression, CancellationToken cancellationToken) where TProperty : class
+    {
+        var entry = _dbSet.Add(entity);
+
+        ReferenceEntry<TEntity, TProperty> referenceEntry = _context.Entry(entry.Entity).Reference(loadExpression);
+
+        await referenceEntry.LoadAsync(cancellationToken);
+
+        if (referenceEntry.CurrentValue is null)
+            throw new ReferenceEntityNotFoundException();
 
         await _context.SaveChangesAsync(cancellationToken);
 
@@ -48,7 +67,7 @@ public abstract class BaseCommandRepository<TEntity> : IBaseCommandRepository<TE
         TEntity entity = await _dbSet.FirstOrDefaultAsync(extity => id.Equals(extity.Id), cancellationToken);
 
         if (entity is null)
-            return null;
+            throw new NotFoundException();
 
         return await actionIfExists(entity);
     }

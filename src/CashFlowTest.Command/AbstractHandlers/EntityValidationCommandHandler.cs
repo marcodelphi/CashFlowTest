@@ -18,7 +18,3 @@ internal abstract class EntityValidationCommandHandler<TCommand, TResult> : Abst
 
     protected abstract Task<TResult> HandleValidatedCommandAsync(TCommand command, CancellationToken cancellationToken);
 }
-
-internal abstract class EntityValidationCommandHandler<TCommand> : EntityValidationCommandHandler<TCommand, Unit> where TCommand : IRequest
-{
-}

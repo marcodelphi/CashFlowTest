@@ -1,4 +1,5 @@
-﻿using CashFlowTest.Domain.Model.Entities;
+﻿using CashFlowTest.Domain.Data.Mappings;
+using CashFlowTest.Domain.Model.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CashFlowTest.Domain.Data;
@@ -13,5 +14,10 @@ public sealed class CashFlowTestDataContext : DbContext
     {
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder) => base.OnModelCreating(modelBuilder);
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfiguration(new ExpenseMap());
+
+        base.OnModelCreating(modelBuilder);
+    }
 }

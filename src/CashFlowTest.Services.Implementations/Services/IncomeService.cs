@@ -4,6 +4,7 @@ using CashFlowTest.Domain.Model.AdaptersContracts;
 using CashFlowTest.Domain.Model.Entities;
 using CashFlowTest.Query.Abstractions.Queries.IncomeQueries;
 using CashFlowTest.Services.Abstractions.Services;
+using CashFlowTest.Services.Implementations.Services.Core;
 using MediatR;
 
 namespace CashFlowTest.Services.Implementations.Services;

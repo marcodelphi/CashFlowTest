@@ -1,4 +1,5 @@
 ﻿using CashFlowTest.Command.Abstractions.Repositories;
+using CashFlowTest.Command.Repositories.Core;
 using CashFlowTest.Domain.Data;
 using CashFlowTest.Domain.Model.Entities;
 

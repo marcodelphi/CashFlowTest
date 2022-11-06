@@ -14,6 +14,7 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<IExpenseCategoryRepository, ExpenseCategoryRepository>();
         services.AddScoped<IIncomeRepository, IncomeRepository>();
+        services.AddScoped<IExpenseRepository, ExpenseRepository>();
         return services;
     }
 

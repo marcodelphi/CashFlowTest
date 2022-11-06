@@ -22,5 +22,7 @@ public abstract class BaseQueryRepository<TEntity> : IBaseQueryRepository<TEntit
 
     public async Task<TEntity[]> GetAllAsync(CancellationToken cancellationToken)
         => await _dbSet.ToArrayAsync(cancellationToken);
+
+    public IQueryable<TEntity> Queryable() => _dbSet.AsQueryable();
 }
 

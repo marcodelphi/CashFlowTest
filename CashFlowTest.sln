@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlowTest.Command", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlowTest.Domain.Model", "src\CashFlowTest.Domain.Model\CashFlowTest.Domain.Model.csproj", "{10FA1AEF-A69F-41E3-A575-7F659E8EBF6C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - crosscutting", "6 - crosscutting", "{23FCE0BA-93DB-4A39-8D44-F81F4DB97DCE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - crosscutting", "4 - crosscutting", "{23FCE0BA-93DB-4A39-8D44-F81F4DB97DCE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlowTest.Crosscutting", "src\CashFlowTest.Crosscutting\CashFlowTest.Crosscutting.csproj", "{01540822-6596-4025-82F4-A1DFBB25BA0C}"
 EndProject
@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlowTest.Services.Abstr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlowTest.Services.Implementations", "src\CashFlowTest.Services.Implementations\CashFlowTest.Services.Implementations.csproj", "{64307848-A3AF-43F0-9A40-FE30F1ED59CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlowTest.Query.Abstractions", "src\CashFlowTest.Query.Abstractions\CashFlowTest.Query.Abstractions.csproj", "{50BB99C1-51A0-41ED-85B8-8D1A0038DD60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlowTest.Query.Abstractions", "src\CashFlowTest.Query.Abstractions\CashFlowTest.Query.Abstractions.csproj", "{50BB99C1-51A0-41ED-85B8-8D1A0038DD60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -8,4 +8,10 @@ public sealed class ExpenseCategory : BaseEntity, IAggregateRoot<ExpenseCategory
     {
         Description = description;
     }
+
+    public ExpenseCategory(Guid id, string description)
+    {
+        Id = id;
+        Description = description;
+    }
 }

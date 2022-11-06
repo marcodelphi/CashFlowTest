@@ -27,8 +27,10 @@ public class ExpenseService : BaseCrudService<Expense, ExpenseDto, AddExpenseCom
         return expenses.Select(income => ToDto(income)).ToArray();
     }
 
-    public Task<ExpenseDto[]> GetAllExpensesAsync(CancellationToken cancellationToken)
+    public async Task<ExpenseDto[]> GetAllExpensesAsync(CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        Expense[] expenses = await _mediator.Send(new GetExpensesQuery(), cancellationToken);
+
+        return expenses.Select(expense => ToDto(expense)).ToArray();
     }
 }

@@ -33,8 +33,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlowTest.Services.Imple
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlowTest.Query.Abstractions", "src\CashFlowTest.Query.Abstractions\CashFlowTest.Query.Abstractions.csproj", "{50BB99C1-51A0-41ED-85B8-8D1A0038DD60}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "CashFlowTest-FrontEnd", "src\CashFlowTest-FrontEnd\CashFlowTest-FrontEnd.esproj", "{2F8B3704-4A33-427D-AEBC-44D92E9892AA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,12 +79,6 @@ Global
 		{50BB99C1-51A0-41ED-85B8-8D1A0038DD60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50BB99C1-51A0-41ED-85B8-8D1A0038DD60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50BB99C1-51A0-41ED-85B8-8D1A0038DD60}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F8B3704-4A33-427D-AEBC-44D92E9892AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F8B3704-4A33-427D-AEBC-44D92E9892AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F8B3704-4A33-427D-AEBC-44D92E9892AA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{2F8B3704-4A33-427D-AEBC-44D92E9892AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F8B3704-4A33-427D-AEBC-44D92E9892AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F8B3704-4A33-427D-AEBC-44D92E9892AA}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,7 +98,6 @@ Global
 		{0379A8C6-EBAA-49B9-83E7-1D88A442FDB2} = {BE198BE9-7BE4-498D-90D5-80EE2AD49C9E}
 		{64307848-A3AF-43F0-9A40-FE30F1ED59CC} = {BE198BE9-7BE4-498D-90D5-80EE2AD49C9E}
 		{50BB99C1-51A0-41ED-85B8-8D1A0038DD60} = {2548E003-B81A-4E54-AC0C-DE815B35D091}
-		{2F8B3704-4A33-427D-AEBC-44D92E9892AA} = {3A755C10-48AF-49FC-88FA-377B1597DFD9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FBBB8DD-4882-4778-9FCB-82F71A3FE903}

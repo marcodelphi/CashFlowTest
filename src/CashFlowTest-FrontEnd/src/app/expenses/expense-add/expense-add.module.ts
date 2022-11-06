@@ -1,12 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from 'src/app/material.module';
 import { ExpenseAddComponent } from './expense-add.component';
-import { MatDialogModule } from '@angular/material/dialog';
-
 @NgModule({
   imports: [
     CommonModule,
-    MatDialogModule
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule
   ],
   declarations: [ExpenseAddComponent],
   exports: [ExpenseAddComponent]

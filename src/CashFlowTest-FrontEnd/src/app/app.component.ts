@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ExpensesService } from './expenses/services/expenses.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,4 @@ import { ExpensesService } from './expenses/services/expenses.service';
 })
 export class AppComponent {
   title = 'CashFlowTest-FrontEnd';
-
-  constructor(public readonly expenseService: ExpensesService) { }
 }

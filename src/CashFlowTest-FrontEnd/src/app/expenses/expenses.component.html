@@ -1,9 +1,9 @@
 <div class="demo-button-container">
-  <button mat-raised-button class="demo-button" (click)="expenseService.openAddExpenseDialog()">Cadastrar
+  <button mat-raised-button class="demo-button" (click)="expenseService.openAddDialog()">Cadastrar
     despesa</button>
 </div>
 
-<ng-container *ngIf="expenseService.expenses$ | async as expenses">
+<ng-container *ngIf="expenseService.data$ | async as expenses">
   <table mat-table class="mat-elevation-z8 expenses-table" [dataSource]="expenses">
     <ng-container matColumnDef="createdDate">
       <th mat-header-cell *matHeaderCellDef>Data de criação</th>
@@ -41,7 +41,7 @@
         <button mat-button (click)="notImplemented()">
           <mat-icon aria-hidden="true">edit</mat-icon>
         </button>
-        <button mat-button (click)="expenseService.deleteExpense(expense)">
+        <button mat-button (click)="expenseService.deleteData(expense)">
           <mat-icon aria-hidden="true">delete</mat-icon>
         </button>
       </td>

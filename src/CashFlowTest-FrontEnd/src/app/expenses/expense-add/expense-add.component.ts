@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddExpenseCommand } from 'src/app/commands/expense/add-expense.command';
+import { BaseAddDialogComponent } from 'src/app/components/base-add-dialog/base-add-dialog.component';
+import { Expense } from 'src/app/models/expense/expense.model';
 import { ExpenseCategoryService } from '../services/expense-category.service';
 import { ExpensesService } from '../services/expenses.service';
 
@@ -20,22 +22,20 @@ const DESCRIPTION_MAX_LENGTH = 200;
   styleUrls: ['./expense-add.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ExpenseAddComponent implements OnInit {
-  public form: FormGroup<FormAddExpense>;
-
+export class ExpenseAddComponent extends BaseAddDialogComponent<Expense, AddExpenseCommand, FormAddExpense> implements OnInit {
   constructor(
-    private readonly fb: FormBuilder,
-    private readonly expensesService: ExpensesService,
+    protected override readonly fb: FormBuilder,
+    protected override readonly service: ExpensesService,
     public readonly expenseCategoryService: ExpenseCategoryService
   ) {
-    this.form = this.createForm();
+    super(fb, service);
   }
 
   public ngOnInit(): void {
     this.expenseCategoryService.loadExpenseCategories();
   }
 
-  private createForm(): FormGroup {
+  protected override createForm(): FormGroup<FormAddExpense> {
     return this.fb.group<FormAddExpense>({
       description: new FormControl('', [Validators.required, Validators.minLength(DESCRIPTION_MIN_LENGTH), Validators.maxLength(DESCRIPTION_MAX_LENGTH)]),
       value: new FormControl(0, [Validators.required, Validators.min(0.1)]),
@@ -50,9 +50,4 @@ export class ExpenseAddComponent implements OnInit {
         this.form.controls['description'].hasError('maxlength') ? `Descrição muito grande. Máxima permitida: ${DESCRIPTION_MAX_LENGTH} caracteres` : '';
   }
 
-  public onSubmit(expenseCommand: Partial<AddExpenseCommand>): void {
-    this.expensesService.addExpense(expenseCommand, (expense) => {
-      console.log(expense);
-    });
-  }
 }

@@ -16,6 +16,6 @@ export class ExpensesComponent implements OnInit {
   constructor(public readonly expenseService: ExpensesService) { }
 
   public ngOnInit(): void {
-    this.expenseService.getAllExpenses();
+    this.expenseService.getAll();
   }
 }

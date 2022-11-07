@@ -2,9 +2,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddExpenseCommand } from 'src/app/commands/expense/add-expense.command';
 import { BaseAddDialogComponent } from 'src/app/components/base-add-dialog/base-add-dialog.component';
+import { FormFieldsLengthConstants } from 'src/app/crosscutting/constants/form-fields-lengh.constants';
 import { Expense } from 'src/app/models/expense/expense.model';
-import { ExpenseCategoryService } from '../services/expense-category.service';
-import { ExpensesService } from '../services/expenses.service';
+import { ExpenseCategoryService } from '../../services/expense-category.service';
+import { ExpensesService } from '../../services/expenses.service';
 
 export interface FormAddExpense {
   description: FormControl<string | null>;
@@ -14,7 +15,6 @@ export interface FormAddExpense {
 }
 
 const DESCRIPTION_MIN_LENGTH = 10;
-const DESCRIPTION_MAX_LENGTH = 200;
 
 @Component({
   selector: 'app-expense-add',
@@ -37,7 +37,7 @@ export class ExpenseAddComponent extends BaseAddDialogComponent<Expense, AddExpe
 
   protected override createForm(): FormGroup<FormAddExpense> {
     return this.fb.group<FormAddExpense>({
-      description: new FormControl('', [Validators.required, Validators.minLength(DESCRIPTION_MIN_LENGTH), Validators.maxLength(DESCRIPTION_MAX_LENGTH)]),
+      description: new FormControl('', [Validators.required, Validators.minLength(DESCRIPTION_MIN_LENGTH), Validators.maxLength(FormFieldsLengthConstants.EXPENSE_CATEGORY_DESCRIPTION_MAX_LENGTH)]),
       value: new FormControl(0, [Validators.required, Validators.min(0.1)]),
       expenseDate: new FormControl(new Date(), [Validators.required]),
       expenseCategoryId: new FormControl('', Validators.required)
@@ -47,7 +47,7 @@ export class ExpenseAddComponent extends BaseAddDialogComponent<Expense, AddExpe
   public getErrorDescription(): string {
     return this.form.controls['description'].hasError('required') ? 'Favor adicionar uma descrição válida' :
       this.form.controls['description'].hasError('minlength') ? `Descrição muito pequena. Minima permitida: ${DESCRIPTION_MIN_LENGTH} caracteres` :
-        this.form.controls['description'].hasError('maxlength') ? `Descrição muito grande. Máxima permitida: ${DESCRIPTION_MAX_LENGTH} caracteres` : '';
+        this.form.controls['description'].hasError('maxlength') ? `Descrição muito grande. Máxima permitida: ${FormFieldsLengthConstants.EXPENSE_CATEGORY_DESCRIPTION_MAX_LENGTH} caracteres` : '';
   }
 
 }

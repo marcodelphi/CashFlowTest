@@ -5,7 +5,7 @@ import { take } from 'rxjs';
 import { AddExpenseCommand } from 'src/app/commands/expense/add-expense.command';
 import { Expense } from 'src/app/models/expense/expense.model';
 import { BaseCrudService } from 'src/app/services/core/base-crud.service';
-import { ExpenseAddComponent } from '../expense-add/expense-add.component';
+import { ExpenseAddComponent } from '../components/expense-add/expense-add.component';
 
 @Injectable({
   providedIn: 'root'

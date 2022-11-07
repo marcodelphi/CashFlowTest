@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExpensesModule } from './expenses/expenses.module';
+import { IncomesModule } from './incomes/incomes.module';
 import { MaterialModule } from './material.module';
 
 registerLocaleData(ptBr);
@@ -24,7 +25,8 @@ registerLocaleData(ptBr);
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ExpensesModule
+    ExpensesModule,
+    IncomesModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },

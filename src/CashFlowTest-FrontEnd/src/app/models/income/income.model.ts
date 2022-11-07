@@ -3,6 +3,6 @@ export interface Income {
   description: string;
   note: string;
   value: number;
-  createdDate: string;
-  incomeDate: string;
+  createdDate: Date;
+  incomeDate: Date;
 }

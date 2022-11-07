@@ -32,7 +32,6 @@ internal sealed class AddIncomeCommandHandler : EntityValidationCommandHandler<A
             .MaximumLength(DatabaseFieldsLengthConstants.INCOME_DESCRIPTION_MAX_LENGTH);
 
         RuleFor(command => command.Note)
-            .NotEmpty()
             .MaximumLength(DatabaseFieldsLengthConstants.INCOME_NOTE_MAX_LENGTH);
 
         RuleFor(command => command.Value)

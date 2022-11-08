@@ -6,15 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.2.2" />
     <PackageReference Include="MediatR" Version="11.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CashFlowTest.Command.Abstractions\CashFlowTest.Command.Abstractions.csproj" />
-    <ProjectReference Include="..\CashFlowTest.Domain.Data\CashFlowTest.Domain.Data.csproj" />
-    <ProjectReference Include="..\CashFlowTest.Notifications\CashFlowTest.Notifications.csproj" />
+    <ProjectReference Include="..\CashFlowTest.Domain.Model\CashFlowTest.Domain.Model.csproj" />
   </ItemGroup>
 
 </Project>

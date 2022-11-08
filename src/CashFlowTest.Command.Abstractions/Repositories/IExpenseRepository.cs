@@ -4,7 +4,7 @@ using CashFlowTest.Domain.Model.Entities;
 
 namespace CashFlowTest.Command.Abstractions.Repositories;
 
-public interface IExpenseRepository : ICommandRepository<Expense>
+public interface IExpenseRepository : ICommandRepository<Expense>, ICommandRepositoryGetEntity<Expense>
 {
     Task<Expense> UpdateAsync(UpdateExpenseCommand command, CancellationToken cancellationToken);
 }

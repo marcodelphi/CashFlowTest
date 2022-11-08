@@ -9,7 +9,7 @@ internal sealed class DeleteExpenseCategoryCommandHandler : SimpleCommandHandler
 {
     private readonly IExpenseCategoryRepository _repository;
 
-    public DeleteExpenseCategoryCommandHandler(IExpenseCategoryRepository respository) => _repository = respository;
+    public DeleteExpenseCategoryCommandHandler(IMediator mediator, IExpenseCategoryRepository respository): base(mediator) => _repository = respository;
 
     protected override async Task<Unit> HandleCommandAsync(DeleteExpenseCategoryCommand command, CancellationToken cancellationToken)
     {

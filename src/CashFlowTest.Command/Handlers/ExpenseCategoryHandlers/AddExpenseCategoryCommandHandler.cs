@@ -4,6 +4,7 @@ using CashFlowTest.Command.Abstractions.Repositories;
 using CashFlowTest.Crosscutting.Constants;
 using CashFlowTest.Domain.Model.Entities;
 using FluentValidation;
+using MediatR;
 
 namespace CashFlowTest.Command.Handlers.ExpenseCategoryHandlers;
 
@@ -11,10 +12,7 @@ internal sealed class AddExpenseCategoryCommandHandler : EntityValidationCommand
 {
     private readonly IExpenseCategoryRepository _repository;
 
-    public AddExpenseCategoryCommandHandler(IExpenseCategoryRepository respository)
-    {
-        _repository = respository;
-    }
+    public AddExpenseCategoryCommandHandler(IMediator mediator, IExpenseCategoryRepository respository) : base(mediator) => _repository = respository;
 
     protected override async Task<ExpenseCategory> HandleValidatedCommandAsync(AddExpenseCategoryCommand command, CancellationToken cancellationToken)
         => await _repository.AddAsync(new ExpenseCategory(command.Description), cancellationToken);

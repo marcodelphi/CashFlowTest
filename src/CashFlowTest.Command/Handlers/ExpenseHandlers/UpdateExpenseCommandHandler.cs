@@ -4,6 +4,7 @@ using CashFlowTest.Command.Abstractions.Repositories;
 using CashFlowTest.Crosscutting.Constants;
 using CashFlowTest.Domain.Model.Entities;
 using FluentValidation;
+using MediatR;
 
 namespace CashFlowTest.Command.Handlers.ExpenseHandlers;
 
@@ -11,10 +12,7 @@ internal sealed class UpdateExpenseCommandHandler : EntityValidationCommandHandl
 {
     private readonly IExpenseRepository _repository;
 
-    public UpdateExpenseCommandHandler(IExpenseRepository respository)
-    {
-        _repository = respository;
-    }
+    public UpdateExpenseCommandHandler(IMediator mediator, IExpenseRepository respository) : base(mediator) => _repository = respository;
 
     protected override async Task<Expense> HandleValidatedCommandAsync(UpdateExpenseCommand command, CancellationToken cancellationToken)
         => await _repository.UpdateAsync(command, cancellationToken);

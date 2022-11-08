@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashFlowTest.Query.Abstract
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Data", "2 - Data", "{B0CE9AAE-C391-49A1-951F-D74FDB45F795}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlowTest.Notifications", "src\CashFlowTest.Notifications\CashFlowTest.Notifications.csproj", "{E5CCA9D5-DA40-491C-91DC-6F444AEB37AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{50BB99C1-51A0-41ED-85B8-8D1A0038DD60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50BB99C1-51A0-41ED-85B8-8D1A0038DD60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50BB99C1-51A0-41ED-85B8-8D1A0038DD60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5CCA9D5-DA40-491C-91DC-6F444AEB37AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5CCA9D5-DA40-491C-91DC-6F444AEB37AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5CCA9D5-DA40-491C-91DC-6F444AEB37AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5CCA9D5-DA40-491C-91DC-6F444AEB37AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +107,7 @@ Global
 		{64307848-A3AF-43F0-9A40-FE30F1ED59CC} = {BE198BE9-7BE4-498D-90D5-80EE2AD49C9E}
 		{50BB99C1-51A0-41ED-85B8-8D1A0038DD60} = {2548E003-B81A-4E54-AC0C-DE815B35D091}
 		{B0CE9AAE-C391-49A1-951F-D74FDB45F795} = {C4823D8C-E486-488C-A4F6-154CFA3F6A23}
+		{E5CCA9D5-DA40-491C-91DC-6F444AEB37AB} = {2548E003-B81A-4E54-AC0C-DE815B35D091}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FBBB8DD-4882-4778-9FCB-82F71A3FE903}

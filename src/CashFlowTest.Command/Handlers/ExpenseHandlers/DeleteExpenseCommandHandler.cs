@@ -1,6 +1,8 @@
 ﻿using CashFlowTest.Command.AbstractHandlers;
 using CashFlowTest.Command.Abstractions.Commands.ExpenseCommands;
 using CashFlowTest.Command.Abstractions.Repositories;
+using CashFlowTest.Domain.Model.Entities;
+using CashFlowTest.Notifications.Notifications;
 using MediatR;
 
 namespace CashFlowTest.Command.Handlers.ExpenseHandlers;
@@ -9,11 +11,18 @@ internal sealed class DeleteExpenseCommandHandler : SimpleCommandHandler<DeleteE
 {
     private readonly IExpenseRepository _repository;
 
-    public DeleteExpenseCommandHandler(IExpenseRepository respository) => _repository = respository;
+    public DeleteExpenseCommandHandler(IMediator mediator, IExpenseRepository respository): base(mediator) => _repository = respository;
 
     protected override async Task<Unit> HandleCommandAsync(DeleteExpenseCommand command, CancellationToken cancellationToken)
     {
+        Expense expense = await _repository.GetAsync(command.Id, cancellationToken);
+
+        if (expense == null)
+            await _mediator.Publish(new NoEntityFoundNotification(command.Id, nameof(Expense)), cancellationToken);
+
         await _repository.DeleteAsync(command.Id, cancellationToken);
+
+        await _mediator.Publish(new ExpenseDeleteNotification(expense.Id, expense.Value), cancellationToken);
 
         return Unit.Value;
     }

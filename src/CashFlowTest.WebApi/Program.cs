@@ -3,12 +3,14 @@ using CashFlowTest.Domain.Data;
 using CashFlowTest.Domain.Model;
 using CashFlowTest.Query;
 using CashFlowTest.Services.Implementations;
+using CashFlowTest.Notifications;
 
 string allowedOriginsPolicy = "SiteCorsPolicy";
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+
 builder.Services.AddResponseCompression();
 
 builder.Services.AddCors(options =>
@@ -32,6 +34,8 @@ builder.Services.AddCashFlowTestDataContext();
 builder.Services.AddCommandHandlers();
 
 builder.Services.AddQueryHandlers();
+
+builder.Services.AddNotificationHandlers();
 
 builder.Services.AddAdapters();
 

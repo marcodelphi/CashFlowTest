@@ -4,6 +4,7 @@ using CashFlowTest.Command.Repositories.Core;
 using CashFlowTest.Crosscutting.Exceptions;
 using CashFlowTest.Domain.Data;
 using CashFlowTest.Domain.Model.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace CashFlowTest.Command.Repositories;
@@ -13,6 +14,9 @@ public sealed class ExpenseRepository : BaseCommandRepository<Expense>, IExpense
     public ExpenseRepository(CashFlowTestDataContext context) : base(context)
     {
     }
+
+    public async Task<Expense> GetAsync(Guid id, CancellationToken cancellationToken) 
+        => await _dbSet.FirstOrDefaultAsync(expense => id.Equals(expense.Id), cancellationToken);
 
     public async Task<Expense> UpdateAsync(UpdateExpenseCommand command, CancellationToken cancellationToken)
     {

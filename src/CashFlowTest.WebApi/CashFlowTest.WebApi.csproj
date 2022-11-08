@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CashFlowTest.Command\CashFlowTest.Command.csproj" />
     <ProjectReference Include="..\CashFlowTest.Domain.Data\CashFlowTest.Domain.Data.csproj" />
+    <ProjectReference Include="..\CashFlowTest.Notifications\CashFlowTest.Notifications.csproj" />
     <ProjectReference Include="..\CashFlowTest.Query\CashFlowTest.Query.csproj" />
     <ProjectReference Include="..\CashFlowTest.Services.Implementations\CashFlowTest.Services.Implementations.csproj" />
   </ItemGroup>

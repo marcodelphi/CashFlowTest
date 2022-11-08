@@ -4,6 +4,7 @@ using CashFlowTest.Command.Abstractions.Repositories;
 using CashFlowTest.Crosscutting.Constants;
 using CashFlowTest.Domain.Model.Entities;
 using FluentValidation;
+using MediatR;
 
 namespace CashFlowTest.Command.Handlers.IncomeHandlers;
 
@@ -11,10 +12,7 @@ internal sealed class UpdateIncomeCommandHandler : EntityValidationCommandHandle
 {
     private readonly IIncomeRepository _repository;
 
-    public UpdateIncomeCommandHandler(IIncomeRepository respository)
-    {
-        _repository = respository;
-    }
+    public UpdateIncomeCommandHandler(IMediator mediator, IIncomeRepository respository) : base(mediator) => _repository = respository;
 
     protected override async Task<Income> HandleValidatedCommandAsync(UpdateIncomeCommand command, CancellationToken cancellationToken)
         => await _repository.UpdateAsync(command.Id, command.Description, command.Note, command.Value, command.IncomeDate, cancellationToken);

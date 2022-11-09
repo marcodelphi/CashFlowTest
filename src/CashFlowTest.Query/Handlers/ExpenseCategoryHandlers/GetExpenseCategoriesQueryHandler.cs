@@ -7,9 +7,9 @@ namespace CashFlowTest.Query.Handlers.ExpenseCategoryHandlers;
 
 internal sealed class GetExpenseCategoriesQueryHandler : SimpleQueryHandler<GetExpenseCategoriesQuery, ExpenseCategory[]>
 {
-    private readonly IExpenseCategoryQueryRespository _repository;
+    private readonly IExpenseCategoryQueryRepository _repository;
 
-    public GetExpenseCategoriesQueryHandler(IExpenseCategoryQueryRespository repository)
+    public GetExpenseCategoriesQueryHandler(IExpenseCategoryQueryRepository repository)
     {
         _repository = repository;
     }

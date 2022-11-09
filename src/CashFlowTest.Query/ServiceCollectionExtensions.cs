@@ -11,11 +11,13 @@ public static class ServiceCollectionExtensions
     {
         services.AddMediatR(typeof(ServiceCollectionExtensions).Assembly);
 
-        services.AddScoped<IExpenseCategoryQueryRespository, ExpenseCategoryQueryRespository>();
+        services.AddScoped<IExpenseCategoryQueryRepository, ExpenseCategoryQueryRepository>();
 
-        services.AddScoped<IIncomeQueryRespository, IncomeQueryRespository>();
+        services.AddScoped<IIncomeQueryRepository, IncomeQueryRepository>();
 
-        services.AddScoped<IExpenseQueryRespository, ExpenseQueryRespository>();
+        services.AddScoped<IExpenseQueryRepository, ExpenseQueryRepository>();
+
+        //services.AddScoped<ICashFlowSummaryRepository, CashFlowSummaryRepository>();
 
         return services;
     }

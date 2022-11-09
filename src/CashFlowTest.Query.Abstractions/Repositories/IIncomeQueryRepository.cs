@@ -2,6 +2,6 @@
 
 namespace CashFlowTest.Query.Abstractions.Repositories;
 
-public interface IIncomeQueryRespository: IBaseQueryRepository<Income>
+public interface IIncomeQueryRepository: IBaseQueryRepository<Income>
 {
 }

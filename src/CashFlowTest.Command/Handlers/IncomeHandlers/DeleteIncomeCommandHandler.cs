@@ -9,7 +9,7 @@ internal sealed class DeleteIncomeCommandHandler : SimpleCommandHandler<DeleteIn
 {
     private readonly IIncomeRepository _repository;
 
-    public DeleteIncomeCommandHandler(IMediator mediator, IIncomeRepository respository): base(mediator) => _repository = respository;
+    public DeleteIncomeCommandHandler(IMediator mediator, IIncomeRepository repository): base(mediator) => _repository = repository;
 
     protected override async Task<Unit> HandleCommandAsync(DeleteIncomeCommand command, CancellationToken cancellationToken)
     {

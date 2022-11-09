@@ -1,6 +1,6 @@
 ﻿using CashFlowTest.Command.Abstractions.Repositories;
 using CashFlowTest.Command.Repositories.Core;
-using CashFlowTest.Domain.Data;
+using CashFlowTest.Domain.Data.CommandContext;
 using CashFlowTest.Domain.Model.Entities;
 
 namespace CashFlowTest.Command.Repositories;

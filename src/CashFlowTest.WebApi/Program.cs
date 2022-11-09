@@ -4,6 +4,7 @@ using CashFlowTest.Domain.Model;
 using CashFlowTest.Query;
 using CashFlowTest.Services.Implementations;
 using CashFlowTest.Notifications;
+using CashFlowTest.Domain.Data.CommandContext;
 
 string allowedOriginsPolicy = "SiteCorsPolicy";
 

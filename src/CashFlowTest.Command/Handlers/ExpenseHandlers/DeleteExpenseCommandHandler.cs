@@ -11,7 +11,7 @@ internal sealed class DeleteExpenseCommandHandler : SimpleCommandHandler<DeleteE
 {
     private readonly IExpenseRepository _repository;
 
-    public DeleteExpenseCommandHandler(IMediator mediator, IExpenseRepository respository): base(mediator) => _repository = respository;
+    public DeleteExpenseCommandHandler(IMediator mediator, IExpenseRepository repository): base(mediator) => _repository = repository;
 
     protected override async Task<Unit> HandleCommandAsync(DeleteExpenseCommand command, CancellationToken cancellationToken)
     {

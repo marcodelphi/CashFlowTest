@@ -12,7 +12,7 @@ internal sealed class AddExpenseCategoryCommandHandler : EntityValidationCommand
 {
     private readonly IExpenseCategoryRepository _repository;
 
-    public AddExpenseCategoryCommandHandler(IMediator mediator, IExpenseCategoryRepository respository) : base(mediator) => _repository = respository;
+    public AddExpenseCategoryCommandHandler(IMediator mediator, IExpenseCategoryRepository repository) : base(mediator) => _repository = repository;
 
     protected override async Task<ExpenseCategory> HandleValidatedCommandAsync(AddExpenseCategoryCommand command, CancellationToken cancellationToken)
         => await _repository.AddAsync(new ExpenseCategory(command.Description), cancellationToken);

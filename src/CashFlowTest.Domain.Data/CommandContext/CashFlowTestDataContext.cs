@@ -2,7 +2,7 @@
 using CashFlowTest.Domain.Model.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace CashFlowTest.Domain.Data;
+namespace CashFlowTest.Domain.Data.CommandContext;
 
 public sealed class CashFlowTestDataContext : DbContext
 {

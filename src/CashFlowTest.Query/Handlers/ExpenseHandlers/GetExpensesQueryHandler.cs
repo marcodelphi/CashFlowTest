@@ -8,9 +8,9 @@ namespace CashFlowTest.Query.Handlers.IncomeHandlers;
 
 internal sealed class GetExpensesQueryHandler : SimpleQueryHandler<GetExpensesQuery, Expense[]>
 {
-    private readonly IExpenseQueryRespository _repository;
+    private readonly IExpenseQueryRepository _repository;
 
-    public GetExpensesQueryHandler(IExpenseQueryRespository repository)
+    public GetExpensesQueryHandler(IExpenseQueryRepository repository)
     {
         _repository = repository;
     }

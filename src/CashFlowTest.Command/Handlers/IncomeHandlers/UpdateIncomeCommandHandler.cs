@@ -12,7 +12,7 @@ internal sealed class UpdateIncomeCommandHandler : EntityValidationCommandHandle
 {
     private readonly IIncomeRepository _repository;
 
-    public UpdateIncomeCommandHandler(IMediator mediator, IIncomeRepository respository) : base(mediator) => _repository = respository;
+    public UpdateIncomeCommandHandler(IMediator mediator, IIncomeRepository repository) : base(mediator) => _repository = repository;
 
     protected override async Task<Income> HandleValidatedCommandAsync(UpdateIncomeCommand command, CancellationToken cancellationToken)
         => await _repository.UpdateAsync(command.Id, command.Description, command.Note, command.Value, command.IncomeDate, cancellationToken);

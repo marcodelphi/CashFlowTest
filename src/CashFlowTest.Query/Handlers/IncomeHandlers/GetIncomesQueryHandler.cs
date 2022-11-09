@@ -7,9 +7,9 @@ namespace CashFlowTest.Query.Handlers.IncomeHandlers;
 
 internal sealed class GetIncomesQueryHandler : SimpleQueryHandler<GetIncomesQuery, Income[]>
 {
-    private readonly IIncomeQueryRespository _repository;
+    private readonly IIncomeQueryRepository _repository;
 
-    public GetIncomesQueryHandler(IIncomeQueryRespository repository)
+    public GetIncomesQueryHandler(IIncomeQueryRepository repository)
     {
         _repository = repository;
     }

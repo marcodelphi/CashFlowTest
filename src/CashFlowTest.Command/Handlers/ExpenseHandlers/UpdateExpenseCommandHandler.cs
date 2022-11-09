@@ -12,7 +12,7 @@ internal sealed class UpdateExpenseCommandHandler : EntityValidationCommandHandl
 {
     private readonly IExpenseRepository _repository;
 
-    public UpdateExpenseCommandHandler(IMediator mediator, IExpenseRepository respository) : base(mediator) => _repository = respository;
+    public UpdateExpenseCommandHandler(IMediator mediator, IExpenseRepository repository) : base(mediator) => _repository = repository;
 
     protected override async Task<Expense> HandleValidatedCommandAsync(UpdateExpenseCommand command, CancellationToken cancellationToken)
         => await _repository.UpdateAsync(command, cancellationToken);

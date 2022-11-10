@@ -17,7 +17,7 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<IExpenseQueryRepository, ExpenseQueryRepository>();
 
-        //services.AddScoped<ICashFlowSummaryRepository, CashFlowSummaryRepository>();
+        services.AddScoped<ICashFlowSummaryRepository, CashFlowSummaryRepository>();
 
         return services;
     }

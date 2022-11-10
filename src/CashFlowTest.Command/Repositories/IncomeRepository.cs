@@ -2,6 +2,7 @@
 using CashFlowTest.Command.Repositories.Core;
 using CashFlowTest.Domain.Data.CommandContext;
 using CashFlowTest.Domain.Model.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace CashFlowTest.Command.Repositories;
 
@@ -11,6 +12,9 @@ public sealed class IncomeRepository : BaseCommandRepository<Income>, IIncomeRep
     {
     }
 
+    public async Task<Income> GetAsync(Guid id, CancellationToken cancellationToken)
+        => await _dbSet.FirstOrDefaultAsync(income => id.Equals(income.Id), cancellationToken);
+
     public async Task<Income> UpdateAsync(Guid id, string description, string note, decimal value, DateTime incomeDate, CancellationToken cancellationToken)
     {
         return await FindForUpdateAsync(id, cancellationToken, async (income) =>
@@ -18,7 +22,7 @@ public sealed class IncomeRepository : BaseCommandRepository<Income>, IIncomeRep
             income.Description = description;
             income.Note = note;
             income.Value = value;
-            income.IncomeDate = incomeDate;
+            income.SetIncomeDate(incomeDate);
 
            _dbSet.Update(income);
 

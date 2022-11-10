@@ -6,7 +6,7 @@ public sealed class Income : BaseEntity, IAggregateRoot<Income>
     {
         Description = description;
         Value = value;
-        CreatedDate = DateTime.Now;
+        CreatedDate = DateTime.Now.ToLocalTime();
     }
 
     public Income()
@@ -17,5 +17,7 @@ public sealed class Income : BaseEntity, IAggregateRoot<Income>
     public string Note { get; set; }
     public decimal Value { get; set; }
     public DateTime CreatedDate { get; set; }
-    public DateTime IncomeDate { get; set; }
+    public DateTime IncomeDate { get; private set; }
+
+    public void SetIncomeDate(DateTime date) => IncomeDate = date.ToLocalTime();
 }

@@ -3,6 +3,7 @@ using CashFlowTest.Command.Abstractions.Commands.IncomeCommands;
 using CashFlowTest.Command.Abstractions.Repositories;
 using CashFlowTest.Crosscutting.Constants;
 using CashFlowTest.Domain.Model.Entities;
+using CashFlowTest.Notifications.Notifications;
 using FluentValidation;
 using MediatR;
 
@@ -16,11 +17,18 @@ internal sealed class AddIncomeCommandHandler : EntityValidationCommandHandler<A
 
     protected override async Task<Income> HandleValidatedCommandAsync(AddIncomeCommand command, CancellationToken cancellationToken)
     {
-        return await _repository.AddAsync(new Income(command.Description, command.Value)
+        Income income = new Income(command.Description, command.Value)
         {
             Note = command.Note,
-            IncomeDate = command.IncomeDate
-        }, cancellationToken);
+        };
+
+        income.SetIncomeDate(command.IncomeDate);
+
+        income = await _repository.AddAsync(income, cancellationToken);
+
+        await _mediator.Publish(new IncomeAddNotification(income.Id, income.Description, income.Note, income.Value, income.CreatedDate, income.IncomeDate), cancellationToken);
+
+        return income;
     }
 
     protected override void SetupRules()

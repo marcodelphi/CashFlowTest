@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CashFlowTest.Domain.Model\CashFlowTest.Domain.Model.csproj" />
+    <ProjectReference Include="..\CashFlowTest.Services.Abstractions\CashFlowTest.Services.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,12 +5,12 @@ namespace CashFlowTest.Notifications.Notifications;
 
 public readonly record struct ExpenseDeleteNotification: INotification, IBaseNotification
 {
-    public ExpenseDeleteNotification(Guid id, decimal value)
+    public ExpenseDeleteNotification(DateTime expenseDate, decimal value)
     {
-        Id = id;
+        ExpenseDate = expenseDate;
         Value = value;
     }
 
-    public Guid Id { get; }
+    public DateTime ExpenseDate { get; }
     public decimal Value { get; }
 }

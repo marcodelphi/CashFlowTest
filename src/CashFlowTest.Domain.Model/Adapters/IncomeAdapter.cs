@@ -8,12 +8,16 @@ public sealed class IncomeAdapter : IIncomeAdapter
 {
     public IncomeDto ToDto(Income source) => new IncomeDto(source.Id, source.Description, source.Note, source.Value, source.CreatedDate, source.IncomeDate);
 
-    public Income ToModel(IncomeDto target) => new Income
+    public Income ToModel(IncomeDto target)
     {
-        Id = target.Id,
-        Description = target.Description,
-        Note = target.Note,
-        IncomeDate = target.IncomeDate,
-        Value = target.Value
-    };
+        Income income = new Income
+        {
+            Id = target.Id,
+            Description = target.Description,
+            Note = target.Note,
+            Value = target.Value
+        };
+        income.SetIncomeDate(target.IncomeDate);
+        return income;
+    }
 }

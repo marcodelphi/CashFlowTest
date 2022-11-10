@@ -22,7 +22,7 @@ internal sealed class DeleteExpenseCommandHandler : SimpleCommandHandler<DeleteE
 
         await _repository.DeleteAsync(command.Id, cancellationToken);
 
-        await _mediator.Publish(new ExpenseDeleteNotification(expense.Id, expense.Value), cancellationToken);
+        await _mediator.Publish(new ExpenseDeleteNotification(expense.ExpenseDate, expense.Value), cancellationToken);
 
         return Unit.Value;
     }

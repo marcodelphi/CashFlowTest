@@ -10,6 +10,7 @@ public abstract class BaseQueryRepository<TEntity> : IBaseQueryRepository<TEntit
 
     protected DbSet<TEntity> _dbSet;
 
+    public DbSet<TEntity> DbSet => _dbSet;
 
     public BaseQueryRepository(DbContext context)
     {

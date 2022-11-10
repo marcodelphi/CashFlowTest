@@ -5,8 +5,9 @@ namespace CashFlowTest.Notifications.Notifications;
 
 public readonly record struct ExpenseAddNotification : INotification, IBaseNotification
 {
-    public ExpenseAddNotification(string description, decimal value, DateTime createdDate, DateTime expenseDate, string expenseCategory)
+    public ExpenseAddNotification(Guid expenseId, string description, decimal value, DateTime createdDate, DateTime expenseDate, string expenseCategory)
     {
+        Id = expenseId;
         Description = description;
         Value = value;
         CreatedDate = createdDate;
@@ -14,6 +15,7 @@ public readonly record struct ExpenseAddNotification : INotification, IBaseNotif
         ExpenseCategory = expenseCategory;
     }
 
+    public Guid Id { get; }
     public string Description { get; }
     public decimal Value { get; }
     public DateTime CreatedDate { get; }

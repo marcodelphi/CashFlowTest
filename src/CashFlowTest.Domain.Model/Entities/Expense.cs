@@ -8,8 +8,8 @@ public sealed class Expense: BaseEntity, IAggregateRoot<Expense>
     {
         Description = description;
         Value = value;
-        CreatedDate = DateTime.Now;
-        ExpenseDate = expenseDate;
+        CreatedDate = DateTime.Now.ToLocalTime();
+        ExpenseDate = expenseDate.ToLocalTime();
         ExpenseCategoryId = expenseCategoryId;
     }
 

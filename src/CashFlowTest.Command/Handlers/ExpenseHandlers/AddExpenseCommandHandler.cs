@@ -19,7 +19,7 @@ internal sealed class AddExpenseCommandHandler : EntityValidationCommandHandler<
     {
         Expense expense = await _repository.AddAsync(new Expense(command.Description, command.Value, command.ExpenseDate, command.ExpenseCategoryId), x => x.ExpenseCategory, cancellationToken);
 
-        await _mediator.Publish(new ExpenseAddNotification(expense.Description, expense.Value, expense.CreatedDate, expense.ExpenseDate, expense.ExpenseCategory.Description), cancellationToken);
+        await _mediator.Publish(new ExpenseAddNotification(expense.Id, expense.Description, expense.Value, expense.CreatedDate, expense.ExpenseDate, expense.ExpenseCategory.Description), cancellationToken);
 
         return expense;
     }

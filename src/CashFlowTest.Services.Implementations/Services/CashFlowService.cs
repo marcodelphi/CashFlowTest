@@ -46,11 +46,14 @@ public sealed class CashFlowService : ICashFlowService
 
         return allData.Select(x => new SummaryDto
         {
+            Id = x.Id,
             Date = x.Date,
             TotalIncome = x.TotalIncome,
             TotalExpense = x.TotalExpense,
             Balance = x.Balance
-        }).ToArray();
+        })
+        .OrderBy(x => x.Date)
+        .ToArray();
     }
 
     public async Task AddSummaryEventAsync(SummaryInput summaryInput, Func<SummaryEvent, SummaryEvent> summaryAction, CancellationToken cancellationToken)

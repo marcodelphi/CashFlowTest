@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { DailyFlowModule } from './daily-flow/daily-flow.module';
 import { ExpensesModule } from './expenses/expenses.module';
 import { IncomesModule } from './incomes/incomes.module';
 import { MaterialModule } from './material.module';
@@ -28,7 +29,8 @@ registerLocaleData(ptBr);
     BrowserAnimationsModule,
     MaterialModule,
     ExpensesModule,
-    IncomesModule
+    IncomesModule,
+    DailyFlowModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },

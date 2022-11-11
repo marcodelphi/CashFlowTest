@@ -1,7 +1,8 @@
 ﻿namespace CashFlowTest.Crosscutting.DTOs;
 
-public record SummaryDto
+public struct SummaryDto
 {
+    public Guid Id { get; set; }
     public DateTime Date { get; set; }
     public decimal TotalIncome { get; set; }
     public decimal TotalExpense { get; set; }

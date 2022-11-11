@@ -1,6 +1,6 @@
 # CashFlowTest
 
-## Frontend
+## Build do Frontend
 
 Baixar o Docker e rodar os seguintes comandos dentro da pasta .\frontend:
 
@@ -12,6 +12,8 @@ Baixar o Docker e rodar os seguintes comandos dentro da pasta .\frontend:
 
 Abrir o código diretamente no Visual Studio e rodar o projeto CashFlowTest.WebApi.csproj
 
-## Execução
+Para acessar diretamente os endpoints, abrir o browser no seguinte endereço: `http://localhost:33001/swagger/index.html`
+
+## Abrir o frontend
 
 Abrir o browser no endereço: `http://localhost:4200/`
